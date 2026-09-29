@@ -1,0 +1,4 @@
+const depths=['1.20','1.48','1.80','2.13','2.84','3.32','3.65'];
+const slider=document.getElementById('depth');
+slider.addEventListener('input',()=>{const i=Number(slider.value);const image=document.getElementById('depth-image');image.src=`assets/depth-${i}.png?v=2`;image.alt=`Digit at ${depths[i]} meters: reference photograph, Standard RSD, spherical FBP, and Scaled RSD.`;document.getElementById('depth-value').textContent=`${depths[i]} m`;slider.setAttribute('aria-valuetext',`${depths[i]} meters`);});
+document.getElementById('copy').addEventListener('click',async()=>{const status=document.getElementById('copy-status');try{await navigator.clipboard.writeText(document.getElementById('bibtex').textContent);status.textContent='BibTeX copied.';}catch{status.textContent='Select the citation text above to copy it.';}});
